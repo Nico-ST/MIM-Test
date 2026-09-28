@@ -1,0 +1,9 @@
+# Author: N.Stillhart / 2026-09-28
+bin/
+obj/
+.vs/
+*.user
+TestResults/
+
+# MIM reference assemblies are proprietary - copied by deploy/Build-ActorInheritance.ps1
+lib/*.dll

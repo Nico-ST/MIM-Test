@@ -1,0 +1,27 @@
+<!--
+  Author : N.Stillhart
+  Date   : 2026-09-28
+  Purpose: Unit tests for the MIM independent inheritance logic. The tested
+           source files are linked, so the tests run on any machine with the
+           .NET SDK - no MIM assemblies required.
+-->
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <IsPackable>false</IsPackable>
+    <Nullable>disable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Include="..\..\src\MIM.ActorInheritance.Workflow\AttributeChange.cs" Link="Linked\AttributeChange.cs" />
+    <Compile Include="..\..\src\MIM.ActorInheritance.Workflow\InheritanceCalculator.cs" Link="Linked\InheritanceCalculator.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.11.1" />
+    <PackageReference Include="xunit" Version="2.9.2" />
+    <PackageReference Include="xunit.runner.visualstudio" Version="2.8.2" PrivateAssets="all" />
+  </ItemGroup>
+
+</Project>

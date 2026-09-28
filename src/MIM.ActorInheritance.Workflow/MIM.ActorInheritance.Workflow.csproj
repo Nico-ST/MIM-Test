@@ -1,0 +1,66 @@
+<!--
+  Author : N.Stillhart
+  Date   : 2026-09-28
+  Purpose: MIM custom workflow activity "Actor Inheritance" (main identity -> sub-identities).
+
+  Build prerequisites (see README.md):
+    - MIM reference assemblies in ..\..\lib (or pass -p:MimReferencePath=<folder>):
+        Microsoft.ResourceManagement.dll
+        Microsoft.IdentityManagement.WebUI.Controls.dll
+    - Strong name key ..\..\ActorInheritance.snk (deploy\Build-ActorInheritance.ps1 creates it).
+-->
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net462</TargetFramework>
+    <LangVersion>7.3</LangVersion>
+    <AssemblyName>MIM.ActorInheritance.Workflow</AssemblyName>
+    <RootNamespace>MIM.ActorInheritance.Workflow</RootNamespace>
+    <!-- The assembly version is part of the registered activity and the workflow XOML. Keep it stable. -->
+    <AssemblyVersion>1.0.0.0</AssemblyVersion>
+    <FileVersion>1.0.0.0</FileVersion>
+    <Version>1.0.0</Version>
+    <Product>MIM Actor Inheritance Workflow</Product>
+    <Authors>N.Stillhart</Authors>
+    <Description>MIM action activity that lets sub-identities inherit the actor attributes of their main identity.</Description>
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+    <!-- MIM workflows are built on Windows Workflow Foundation 3.x, which .NET marks obsolete. -->
+    <NoWarn>$(NoWarn);CS0618</NoWarn>
+    <SignAssembly>true</SignAssembly>
+    <AssemblyOriginatorKeyFile Condition="'$(AssemblyOriginatorKeyFile)' == ''">$(MSBuildThisFileDirectory)..\..\ActorInheritance.snk</AssemblyOriginatorKeyFile>
+    <MimReferencePath Condition="'$(MimReferencePath)' == ''">$(MSBuildThisFileDirectory)..\..\lib</MimReferencePath>
+    <!-- Separate property: a MimReferencePath passed with -p: is global and cannot be normalized in place. -->
+    <MimReferenceDir>$([MSBuild]::EnsureTrailingSlash('$(MimReferencePath)'))</MimReferenceDir>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Reference Include="System.Web" />
+    <Reference Include="System.Workflow.Activities" />
+    <Reference Include="System.Workflow.ComponentModel" />
+    <Reference Include="System.Workflow.Runtime" />
+    <Reference Include="Microsoft.ResourceManagement">
+      <HintPath>$(MimReferenceDir)Microsoft.ResourceManagement.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="Microsoft.IdentityManagement.WebUI.Controls">
+      <HintPath>$(MimReferenceDir)Microsoft.IdentityManagement.WebUI.Controls.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <!-- Only needed without the .NET Framework 4.6.2 targeting pack (e.g. dotnet CLI); skipped otherwise so offline builds work. -->
+    <PackageReference Include="Microsoft.NETFramework.ReferenceAssemblies" Version="1.0.3" PrivateAssets="all"
+                      Condition="!Exists('$(MSBuildProgramFiles32)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.2\mscorlib.dll')" />
+  </ItemGroup>
+
+  <Target Name="VerifyActorInheritancePrerequisites" BeforeTargets="ResolveAssemblyReferences">
+    <Error Condition="!Exists('$(MimReferenceDir)Microsoft.ResourceManagement.dll')"
+           Text="Microsoft.ResourceManagement.dll not found in '$(MimReferenceDir)'. Run deploy\Build-ActorInheritance.ps1 on a MIM server or copy the MIM assemblies to the lib folder." />
+    <Error Condition="!Exists('$(MimReferenceDir)Microsoft.IdentityManagement.WebUI.Controls.dll')"
+           Text="Microsoft.IdentityManagement.WebUI.Controls.dll not found in '$(MimReferenceDir)'. Run deploy\Build-ActorInheritance.ps1 on a MIM server or copy the MIM assemblies to the lib folder." />
+    <Error Condition="'$(SignAssembly)' == 'true' And !Exists('$(AssemblyOriginatorKeyFile)')"
+           Text="Strong name key '$(AssemblyOriginatorKeyFile)' not found. Run deploy\Build-ActorInheritance.ps1 to create it; MIM activities must be strong-named to be installed in the GAC." />
+  </Target>
+
+</Project>

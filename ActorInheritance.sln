@@ -1,0 +1,36 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{1B0C75EC-776C-4058-B6EA-C024CF5EF666}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MIM.ActorInheritance.Workflow", "src\MIM.ActorInheritance.Workflow\MIM.ActorInheritance.Workflow.csproj", "{4017CD7A-18BE-4E68-B236-967BF8E0D405}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{978A9C35-8BFB-4DDE-A6A9-AF1FEC0173FC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MIM.ActorInheritance.Workflow.Tests", "tests\MIM.ActorInheritance.Workflow.Tests\MIM.ActorInheritance.Workflow.Tests.csproj", "{DF49E756-653B-45B5-9A49-4916DCBFB8AE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4017CD7A-18BE-4E68-B236-967BF8E0D405}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4017CD7A-18BE-4E68-B236-967BF8E0D405}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4017CD7A-18BE-4E68-B236-967BF8E0D405}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4017CD7A-18BE-4E68-B236-967BF8E0D405}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DF49E756-653B-45B5-9A49-4916DCBFB8AE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DF49E756-653B-45B5-9A49-4916DCBFB8AE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DF49E756-653B-45B5-9A49-4916DCBFB8AE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DF49E756-653B-45B5-9A49-4916DCBFB8AE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{4017CD7A-18BE-4E68-B236-967BF8E0D405} = {1B0C75EC-776C-4058-B6EA-C024CF5EF666}
+		{DF49E756-653B-45B5-9A49-4916DCBFB8AE} = {978A9C35-8BFB-4DDE-A6A9-AF1FEC0173FC}
+	EndGlobalSection
+EndGlobal
