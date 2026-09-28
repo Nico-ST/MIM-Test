@@ -1,0 +1,7 @@
+<!-- A–Z Verkehrsschule – Favicon | Autor: N.Stillhart | Datum: 2026-09-28 -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <rect width="64" height="64" rx="14" fill="#0F0F11"/>
+  <path d="M10 46 L52 30 L54 36 L12 52 Z" fill="#D92318"/>
+  <path d="M14 47.6 L20 45.3 M25 43.4 L31 41.1 M36 39.2 L42 36.9 M47 35 L51 33.5" stroke="#fff" stroke-width="1.4"/>
+  <text x="32" y="30" text-anchor="middle" font-family="Inter Tight, Inter, Helvetica, Arial, sans-serif" font-size="22" font-weight="800" fill="#fff" letter-spacing="-0.5">A–Z</text>
+</svg>
